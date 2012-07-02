@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<!-- basedir -->
+	<basedir path="data" />
+	<!-- sounds -->
+	<!-- songs -->
+	<!-- images -->
+	<image key="up1" file="player/up/1.png" />
+	<image key="up2" file="player/up/2.png" />
+	<image key="down1" file="player/down/1.png" />
+	<image key="down2" file="player/down/2.png" />
+	<image key="left1" file="player/left/1.png" />
+	<image key="left2" file="player/left/2.png" />
+	<image key="right1" file="player/right/1.png" />
+	<image key="right2" file="player/right/2.png" />
+	<image key="bullet" file="bullet.png" />
+	<image key="background" file="background.jpg" />
+	<!-- sheets -->
+	<!-- fonts -->
+</resources>
