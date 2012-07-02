@@ -17,7 +17,6 @@ public class Player extends Entity {
 	int health;
 	float speed = 0.3F;
 	BulletManager bm;
-	Image bulletSprite;
 
 	public Player(float x, float y) {
 		super(x, y);
@@ -47,8 +46,6 @@ public class Player extends Entity {
 		this.setAnim("down");
 
 		bm = new BulletManager();
-		
-		bulletSprite = ResourceManager.getImage("bullet");
 
 		define("UP", Input.KEY_W);
 		define("DOWN", Input.KEY_S);
@@ -83,7 +80,7 @@ public class Player extends Entity {
 		if (check("ATTACK")) {
 			float mouseX = in.getMouseX();
 			float mouseY = in.getMouseY();
-			bm.addBullet(new Bullet(x, y, mouseX, mouseY, bulletSprite));
+			bm.addBullet(new Bullet(x, y, mouseX, mouseY));
 		}
 
 		bm.update(container, delta);

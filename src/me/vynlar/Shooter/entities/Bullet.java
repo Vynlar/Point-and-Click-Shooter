@@ -15,16 +15,19 @@ public class Bullet extends Entity{
 	private Vector2f pos;
 	int width,height;
 
-	public Bullet(float pX, float pY, float mX, float mY, Image sprite) {
+	public Bullet(float pX, float pY, float mX, float mY) {
 		super(pX, pY);
 		
-		setCentered(true);
-		setGraphic(sprite);
+		Image sprite = ResourceManager.getImage("bullet");
 		
 		vel = new Vector2f(mX-pX,mY-pY);
 		vel.normalise();
-		vel.scale(20F);
+		vel.scale(3F);
 		pos = new Vector2f(pX,pY);
+		
+		setCentered(true);
+		sprite.setRotation((float)vel.getTheta());
+		setGraphic(sprite);
 		
 		width = sprite.getWidth();
 		height = sprite.getHeight();
