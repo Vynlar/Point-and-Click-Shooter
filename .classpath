@@ -13,6 +13,5 @@
 			<attribute name="javadoc_location" value="file:/C:/Users/Adrian/Google Drive/Programming/Java/Libraries/Slick/slick/javadoc/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/cloning-1.8.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

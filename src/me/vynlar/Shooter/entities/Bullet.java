@@ -1,6 +1,7 @@
 package me.vynlar.Shooter.entities;
 
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
@@ -15,7 +16,7 @@ public class Bullet extends Entity{
 	private Vector2f pos;
 	int width,height;
 
-	public Bullet(float pX, float pY, float mX, float mY) {
+	public Bullet(float pX, float pY, float mX, float mY) throws SlickException {
 		super(pX, pY);
 		
 		Image sprite = ResourceManager.getImage("bullet");
@@ -26,7 +27,6 @@ public class Bullet extends Entity{
 		pos = new Vector2f(pX,pY);
 		
 		setCentered(true);
-		sprite.setRotation((float)vel.getTheta());
 		setGraphic(sprite);
 		
 		width = sprite.getWidth();
@@ -43,6 +43,7 @@ public class Bullet extends Entity{
 		pos.add(vel);
 		x = pos.x;
 		y = pos.y;
+		currentImage.setRotation((float)vel.getTheta());
 	}
 	
 	public Entity collide(String type) {
@@ -59,5 +60,11 @@ public class Bullet extends Entity{
 			return true;
 		}
 		return false;
+	}
+	
+	@Override
+	public void render(GameContainer container, Graphics g)
+			throws SlickException {
+		super.render(container, g);
 	}
 }

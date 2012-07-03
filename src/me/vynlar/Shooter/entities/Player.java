@@ -5,7 +5,6 @@ import me.vynlar.Shooter.BulletManager;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
@@ -84,7 +83,6 @@ public class Player extends Entity {
 		}
 
 		bm.update(container, delta);
-
 	}
 
 	@Override
