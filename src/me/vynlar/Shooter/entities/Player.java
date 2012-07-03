@@ -1,21 +1,20 @@
 package me.vynlar.Shooter.entities;
 
-import me.vynlar.Shooter.BulletManager;
-
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
+import it.marteEngine.Camera;
 import it.marteEngine.ResourceManager;
+import it.marteEngine.World;
 import it.marteEngine.entity.Entity;
 
 public class Player extends Entity {
 
 	int health;
 	float speed = 0.3F;
-	BulletManager bm;
 
 	public Player(float x, float y) {
 		super(x, y);
@@ -43,8 +42,6 @@ public class Player extends Entity {
 		addAnimation("right", right);
 
 		this.setAnim("down");
-
-		bm = new BulletManager();
 
 		define("UP", Input.KEY_W);
 		define("DOWN", Input.KEY_S);
@@ -79,16 +76,14 @@ public class Player extends Entity {
 		if (check("ATTACK")) {
 			float mouseX = in.getMouseX();
 			float mouseY = in.getMouseY();
-			bm.addBullet(new Bullet(x, y, mouseX, mouseY, world));
+			world.add(new Bullet(x,y,mouseX,mouseY), World.GAME);
 		}
-
-		bm.update(container, delta);
 	}
 
 	@Override
 	public void render(GameContainer container, Graphics g)
 			throws SlickException {
 		super.render(container, g);
-		bm.render(container, g);
+		
 	}
 }

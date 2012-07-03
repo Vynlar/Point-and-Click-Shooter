@@ -16,19 +16,14 @@ public class Bullet extends Entity{
 	private Vector2f vel;
 	private Vector2f pos;
 	int width,height;
-	float speed = 0.5F;
+	float speed = 0.1F;
 
-	public Bullet(float pX, float pY, float mX, float mY, World world) throws SlickException {
+	public Bullet(float pX, float pY, float mX, float mY) throws SlickException {
 		super(pX, pY);
-
-		this.world = world;
-		world.add(this, World.GAME);
 		
 		Image sprite = ResourceManager.getImage("bullet");
 		
 		addType("enemy");
-		
-		System.out.println(this.isType("enemy"));
 		
 		vel = new Vector2f(mX-pX,mY-pY);
 		vel.normalise();

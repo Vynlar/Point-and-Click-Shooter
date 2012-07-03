@@ -25,14 +25,11 @@ public class Enemy extends Entity {
 
 	@Override
 	public void update(GameContainer container, int delta) {
-		if (this.collide("enemy", x, y) != null) {
-			System.out.println("asdfhadsjfh");
-		}
+		collide("enemy",x,y);
 	}
 
 	@Override
 	public void collisionResponse(Entity other) {
-		System.out.println("Collided!");
 		world.remove(this);
 	}
 }

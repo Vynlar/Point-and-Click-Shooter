@@ -1,6 +1,6 @@
 package me.vynlar.Shooter;
 
-import me.vynlar.Shooter.worlds.FirstWorld;
+import me.vynlar.Shooter.worlds.World1;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
@@ -11,12 +11,11 @@ public class Shooter extends StateBasedGame {
 
 	public Shooter() {
 		super("Shooter!");
-
 	}
 
 	@Override
 	public void initStatesList(GameContainer container) throws SlickException {
-		addState(new FirstWorld(0, container));
+		addState(new World1(0, container));
 	}
 
 	public static void main(String[] args) {
