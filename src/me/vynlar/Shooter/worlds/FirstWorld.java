@@ -2,6 +2,7 @@ package me.vynlar.Shooter.worlds;
 
 import java.io.IOException;
 
+import me.vynlar.Shooter.entities.Enemy;
 import me.vynlar.Shooter.entities.Player;
 
 import org.newdawn.slick.GameContainer;
@@ -29,6 +30,7 @@ public class FirstWorld extends World {
 		player = new Player(container.getWidth()/2, container.getHeight()/2);
 
 		this.add(player, World.GAME);
+		this.add(new Enemy(300,300,"zombie"), World.GAME);
 	}
 
 	@Override
@@ -42,8 +44,5 @@ public class FirstWorld extends World {
 	public void update(GameContainer container, StateBasedGame game, int delta)
 			throws SlickException {
 		super.update(container, game, delta);
-
-		// shooting
-
 	}
 }

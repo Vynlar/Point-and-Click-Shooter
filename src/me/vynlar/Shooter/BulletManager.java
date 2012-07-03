@@ -1,9 +1,12 @@
 package me.vynlar.Shooter;
 
+import it.marteEngine.entity.Entity;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import me.vynlar.Shooter.entities.Bullet;
+import me.vynlar.Shooter.entities.Enemy;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -27,17 +30,13 @@ public class BulletManager {
 			throws SlickException {
 		List<Bullet> remove = new ArrayList<Bullet>();
 		for (Bullet b : bullets) {
-			//update
+			// update
 			b.update(container, delta);
-			/*
-			 * Entity other = b.collide("enemy"); if(other != null) {
-			 * remove.add(b); //remove enemy }
-			 */
 
 			if (!b.isOnScreen(container)) {
 				remove.add(b);
 			}
-			
+
 			b.render(container, g);
 		}
 		for (Bullet b : remove) {

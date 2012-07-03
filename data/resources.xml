@@ -15,6 +15,7 @@
 	<image key="right2" file="player/right/2.png" />
 	<image key="bullet" file="bullet.png" />
 	<image key="background" file="background.jpg" />
+	<image key="zombie" file="enemies/zombie.gif" />
 	<!-- sheets -->
 	<!-- fonts -->
 </resources>

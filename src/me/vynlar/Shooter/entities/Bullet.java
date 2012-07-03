@@ -18,8 +18,12 @@ public class Bullet extends Entity{
 
 	public Bullet(float pX, float pY, float mX, float mY) throws SlickException {
 		super(pX, pY);
-		
+
 		Image sprite = ResourceManager.getImage("bullet");
+		
+		addType("enemy");
+		
+		System.out.println(this.isType("enemy"));
 		
 		vel = new Vector2f(mX-pX,mY-pY);
 		vel.normalise();
@@ -44,10 +48,6 @@ public class Bullet extends Entity{
 		x = pos.x;
 		y = pos.y;
 		currentImage.setRotation((float)vel.getTheta());
-	}
-	
-	public Entity collide(String type) {
-		return collide(type, x + width/2 , y + height/2);	
 	}
 	
 	public boolean isOnScreen(GameContainer container)
