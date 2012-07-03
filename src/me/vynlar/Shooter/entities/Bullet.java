@@ -8,6 +8,7 @@ import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Vector2f;
 
 import it.marteEngine.ResourceManager;
+import it.marteEngine.World;
 import it.marteEngine.entity.Entity;
 
 public class Bullet extends Entity{
@@ -15,10 +16,14 @@ public class Bullet extends Entity{
 	private Vector2f vel;
 	private Vector2f pos;
 	int width,height;
+	float speed = 0.5F;
 
-	public Bullet(float pX, float pY, float mX, float mY) throws SlickException {
+	public Bullet(float pX, float pY, float mX, float mY, World world) throws SlickException {
 		super(pX, pY);
 
+		this.world = world;
+		world.add(this, World.GAME);
+		
 		Image sprite = ResourceManager.getImage("bullet");
 		
 		addType("enemy");
@@ -27,7 +32,7 @@ public class Bullet extends Entity{
 		
 		vel = new Vector2f(mX-pX,mY-pY);
 		vel.normalise();
-		vel.scale(3F);
+		vel.scale(speed);
 		pos = new Vector2f(pX,pY);
 		
 		setCentered(true);
@@ -44,6 +49,8 @@ public class Bullet extends Entity{
 		//super.update(container, delta);
 		
 		pos.set(x, y);
+		vel.normalise();
+		vel.scale(speed*delta);
 		pos.add(vel);
 		x = pos.x;
 		y = pos.y;

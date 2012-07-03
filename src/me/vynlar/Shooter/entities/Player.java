@@ -79,7 +79,7 @@ public class Player extends Entity {
 		if (check("ATTACK")) {
 			float mouseX = in.getMouseX();
 			float mouseY = in.getMouseY();
-			bm.addBullet(new Bullet(x, y, mouseX, mouseY));
+			bm.addBullet(new Bullet(x, y, mouseX, mouseY, world));
 		}
 
 		bm.update(container, delta);
