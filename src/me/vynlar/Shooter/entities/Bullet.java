@@ -8,7 +8,6 @@ import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Vector2f;
 
 import it.marteEngine.ResourceManager;
-import it.marteEngine.World;
 import it.marteEngine.entity.Entity;
 
 public class Bullet extends Entity{
@@ -16,7 +15,7 @@ public class Bullet extends Entity{
 	private Vector2f vel;
 	private Vector2f pos;
 	int width,height;
-	float speed = 0.1F;
+	float speed = 0.7F;
 
 	public Bullet(float pX, float pY, float mX, float mY) throws SlickException {
 		super(pX, pY);

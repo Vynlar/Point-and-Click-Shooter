@@ -6,7 +6,6 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
-import it.marteEngine.Camera;
 import it.marteEngine.ResourceManager;
 import it.marteEngine.World;
 import it.marteEngine.entity.Entity;
@@ -18,6 +17,8 @@ public class Player extends Entity {
 
 	public Player(float x, float y) {
 		super(x, y);
+		
+		addType("player");
 		
 		setCentered(true);
 

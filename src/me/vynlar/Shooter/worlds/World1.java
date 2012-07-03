@@ -1,10 +1,10 @@
 package me.vynlar.Shooter.worlds;
 
 import java.io.IOException;
-import java.util.List;
 
 import me.vynlar.Shooter.entities.Enemy;
 import me.vynlar.Shooter.entities.Player;
+import me.vynlar.Shooter.worlds.levels.Level;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -19,7 +19,7 @@ import it.marteEngine.entity.Entity;
 public class World1 extends World {
 
 	Player player;
-	Image background;
+	Level level;
 
 	int delta;
 
@@ -30,17 +30,21 @@ public class World1 extends World {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		background = ResourceManager.getImage("background");
 		player = new Player(container.getWidth() / 2, container.getHeight() / 2);
 
 		this.add(player, World.GAME);
-		this.add(new Enemy(300, 300, "zombie"), World.GAME);
+
+		level = new Level("background");
+		level.init();
+		for (int i = 0; i < 10; i++) {
+			level.addEnemy(new Enemy((float)(Math.random()*container.getWidth()), (float)(Math.random()*container.getHeight()), "zombie"));
+		}
+		level.load(this, player);
 	}
 
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g)
 			throws SlickException {
-		g.drawImage(background, 0, 0);
 		for (Entity e : this.getEntities()) {
 			if (e.isType("enemy")) {
 				e.update(container, delta);
