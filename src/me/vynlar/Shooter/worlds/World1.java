@@ -19,7 +19,7 @@ import it.marteEngine.entity.Entity;
 public class World1 extends World {
 
 	Player player;
-	Level level;
+	Level[] level;
 
 	int delta;
 
@@ -33,20 +33,22 @@ public class World1 extends World {
 		player = new Player(container.getWidth() / 2, container.getHeight() / 2);
 
 		this.add(player, World.GAME);
+		
+		level = new Level[1];
 
-		level = new Level("background");
-		level.init();
+		level[0] = new Level("background");
+		level[0].init();
 		for (int i = 0; i < 10; i++) {
-			level.addEnemy(new Enemy((float)(Math.random()*container.getWidth()), (float)(Math.random()*container.getHeight()), "zombie"));
+			level[0].addEnemy(new Enemy((float)(Math.random()*container.getWidth()), (float)(Math.random()*container.getHeight()), "zombie"));
 		}
-		level.load(this, player);
+		level[0].load(this, player);
 	}
 
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g)
 			throws SlickException {
 		for (Entity e : this.getEntities()) {
-			if (e.isType("enemy")) {
+			if (e.isType("bullet")) {
 				e.update(container, delta);
 				e.render(container, g);
 			} else {

@@ -15,32 +15,33 @@ public class Bullet extends Entity{
 	private Vector2f vel;
 	private Vector2f pos;
 	int width,height;
-	float speed = 0.7F;
+	float speed = 0.1F;
 
 	public Bullet(float pX, float pY, float mX, float mY) throws SlickException {
 		super(pX, pY);
 		
 		Image sprite = ResourceManager.getImage("bullet");
 		
-		addType("enemy");
+		addType("bullet");
 		
 		vel = new Vector2f(mX-pX,mY-pY);
 		vel.normalise();
 		vel.scale(speed);
 		pos = new Vector2f(pX,pY);
 		
-		setCentered(true);
+		//setCentered(true);
 		setGraphic(sprite);
 		
 		width = sprite.getWidth();
 		height = sprite.getHeight();
 		
-		this.setHitBox(0, 0, width, height);
+		this.setHitBox(width/4, height/4, (width/4)*3, (height/4)*3);
 	}
 	
 	@Override
 	public void update(GameContainer container, int delta) throws SlickException {
-		//super.update(container, delta);
+		
+		this.checkWorldBoundaries();
 		
 		pos.set(x, y);
 		vel.normalise();

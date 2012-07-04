@@ -17,10 +17,8 @@ public class Player extends Entity {
 
 	public Player(float x, float y) {
 		super(x, y);
-		
+
 		addType("player");
-		
-		setCentered(true);
 
 		Animation up = new Animation();
 		up.addFrame(ResourceManager.getImage("up1"), 500);
@@ -77,14 +75,21 @@ public class Player extends Entity {
 		if (check("ATTACK")) {
 			float mouseX = in.getMouseX();
 			float mouseY = in.getMouseY();
-			world.add(new Bullet(x,y,mouseX,mouseY), World.GAME);
+			world.add(new Bullet(x, y, mouseX, mouseY), World.GAME);
 		}
+
+		collide("enemy", x + width / 2, x + height / 2);
+	}
+
+	@Override
+	public void collisionResponse(Entity other) {
+		System.out.println("GAME OVER");
 	}
 
 	@Override
 	public void render(GameContainer container, Graphics g)
 			throws SlickException {
 		super.render(container, g);
-		
+
 	}
 }
