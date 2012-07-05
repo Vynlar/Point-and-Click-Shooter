@@ -29,11 +29,13 @@ public class Bullet extends Entity{
 		vel.scale(speed);
 		pos = new Vector2f(pX,pY);
 		
-		//setCentered(true);
+		setCentered(true);
 		setGraphic(sprite);
 		
 		width = sprite.getWidth();
 		height = sprite.getHeight();
+		
+		currentImage.setCenterOfRotation(width/2, height/2);
 		
 		this.setHitBox(width/4, height/4, (width/4)*3, (height/4)*3);
 	}
